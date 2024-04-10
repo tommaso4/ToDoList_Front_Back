@@ -10,6 +10,8 @@ import tom.fullStack.to_do_list.exception.NotFoundException;
 import tom.fullStack.to_do_list.repository.UserRepo;
 import tom.fullStack.to_do_list.request.UserReq;
 
+import java.util.List;
+
 @Service
 public class UserSvc {
 
@@ -44,6 +46,10 @@ public class UserSvc {
         User user = findUserById(id);
         userRepo.delete(user);
         return "User with id: " + user.getId() + "deleted";
+    }
+
+    public List<User> getAll (){
+        return userRepo.findAll();
     }
 
 }

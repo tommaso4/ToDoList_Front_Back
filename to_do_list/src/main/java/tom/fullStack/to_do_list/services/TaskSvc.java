@@ -31,12 +31,13 @@ public class TaskSvc {
     }
 
     public String deleteTask(int idTask){
-        taskRepo.delete(findTaskById(idTask));
-        return "Task with id: " + idTask + "deleted";
+        Task taskToDelete = findTaskById(idTask);
+        taskRepo.delete(taskToDelete);
+        return "Task with ID: " + idTask + " has been successfully deleted.";
     }
 
     public Task findTaskById(int idTask){
-        return taskRepo.findById(idTask).orElseThrow(()-> new NotFoundException("Task do not found"));
+        return taskRepo.findById(idTask).orElseThrow(()-> new NotFoundException("Task do not found."));
     }
 
     public Task changeCompletedAtTask(int idTask){

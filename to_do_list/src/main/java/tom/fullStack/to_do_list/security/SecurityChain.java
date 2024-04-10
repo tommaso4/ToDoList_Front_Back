@@ -27,14 +27,8 @@ public class SecurityChain {
         httpSecurity.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
         httpSecurity.authorizeHttpRequests(req-> req.requestMatchers("/auth/**").permitAll());
-//        httpSecurity.authorizeHttpRequests(req-> req.requestMatchers("/asana/create").hasAuthority(Role.ADMIN.name()));
-//        httpSecurity.authorizeHttpRequests(req-> req.requestMatchers("/asana/delete/**").hasAuthority(Role.ADMIN.name()));
-//        httpSecurity.authorizeHttpRequests(req-> req.requestMatchers("/user/addAsana/**").hasAuthority(Role.CLIENT.name()));
-//        httpSecurity.authorizeHttpRequests(req-> req.requestMatchers("/user/removeAsana/**").hasAuthority(Role.CLIENT.name()));
-//        httpSecurity.authorizeHttpRequests(req-> req.requestMatchers("/user/{id}").permitAll());
-//        httpSecurity.authorizeHttpRequests(req-> req.requestMatchers("/user/delete/{id}").permitAll());
-//        httpSecurity.authorizeHttpRequests(req-> req.requestMatchers("asana/getAll").permitAll());
-//        httpSecurity.authorizeHttpRequests(req-> req.requestMatchers("asana/getByType/{type}").permitAll());
+        httpSecurity.authorizeHttpRequests(req-> req.requestMatchers("/user/**").permitAll());
+        httpSecurity.authorizeHttpRequests(req-> req.requestMatchers("/task/**").permitAll());
         return httpSecurity.build();
     }
 

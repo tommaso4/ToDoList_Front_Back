@@ -7,14 +7,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import tom.fullStack.to_do_list.entities.User;
 import tom.fullStack.to_do_list.request.LoginReq;
 import tom.fullStack.to_do_list.request.UserReq;
+import tom.fullStack.to_do_list.security.JwtTools;
 import tom.fullStack.to_do_list.services.UserSvc;
+
+import java.util.List;
 
 @RestController
 public class UserCtrl {
@@ -26,8 +26,8 @@ public class UserCtrl {
     @Qualifier("BCript")
     private PasswordEncoder encoder;
 
-//    @Autowired
-//    private JwtToken
+    @Autowired
+    private JwtTools jwtTools;
 
     @PostMapping("/auth/register")
     public ResponseEntity<CustomResponse> register (@RequestBody @Validated UserReq userReq, BindingResult result){
@@ -46,8 +46,8 @@ public class UserCtrl {
 
         User user = userSvc.findUserByUsername(loginReq.getUsername());
         if (encoder.matches(loginReq.getPassword(), user.getPassword())){
-            String str = "login succes";
-            return CustomResponse.success(HttpStatus.OK.toString(), str, HttpStatus.OK);
+            String token = jwtTools.createToken(user);
+            return CustomResponse.success(HttpStatus.OK.toString(), token, HttpStatus.OK);
         }else return CustomResponse.failure("Username/Password do not match",HttpStatus.NOT_FOUND);
     }
 
@@ -56,6 +56,13 @@ public class UserCtrl {
         String deleted = userSvc.deleteUser(idUser);
         return CustomResponse.success(HttpStatus.OK.toString(), deleted,HttpStatus.OK);
     }
+
+    @GetMapping("/user/getAll")
+    public ResponseEntity<CustomResponse> getAll(){
+        List<User> users = userSvc.getAll();
+        return CustomResponse.success(HttpStatus.OK.toString(),users, HttpStatus.OK);
+    }
+
 
 }
 
