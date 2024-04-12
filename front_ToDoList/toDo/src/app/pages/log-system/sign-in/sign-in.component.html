@@ -1,5 +1,5 @@
 <div>
-  <form [formGroup]="form" (ngSubmit)="save()">
+  <form [formGroup]="form" (ngSubmit)="register()">
     <div>
       <mat-form-field class="example-full-width">
         <mat-label>Name</mat-label>
@@ -26,6 +26,9 @@
     </div>
     <div *ngIf="inputHasError('username')">
       <p class="text-danger">Username Required</p>
+    </div>
+    <div *ngIf="usernameExist">
+      <p class="text-danger">{{this.usernameErrStr}}</p>
     </div>
     <div>
       <mat-form-field class="example-full-width">
@@ -54,6 +57,7 @@
     <div *ngIf="inputHasError('password2')">
       <p class="text-danger">Passwords do not matches.</p>
     </div>
-    <button [disabled]="this.form.invalid" type="submit">Save</button>
+    <button [disabled]="this.form.invalid" type="submit" mat-raised-button color="primary">Save</button>
   </form>
 </div>
+

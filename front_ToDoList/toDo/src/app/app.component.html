@@ -1,1 +1,9 @@
+<div *ngIf="isloggedIn()" class="d-flex justify-content-between align-items-center mx-2 mt-2" >
+  <div>
+    <h3>ToDoList</h3>
+  </div>
+  <div>
+    <h3 (click)="logout()">{{username}}</h3>
+  </div>
+</div>
 <router-outlet></router-outlet>

@@ -1,1 +1,26 @@
-<p>log-in works!</p>
+<div>
+  <form [formGroup]="form" (ngSubmit)="login()">
+    <div class="mt-2">
+      <mat-form-field class="example-full-width">
+        <mat-label>Username</mat-label>
+        <input matInput placeholder="marioR" formControlName="username">
+      </mat-form-field>
+    </div>
+    <div *ngIf="inputHasError('username')">
+      <p class="text-danger">Username Required</p>
+    </div>
+    <div>
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput placeholder="********" formControlName="password">
+      </mat-form-field>
+    </div>
+    <div *ngIf="inputHasError('password')">
+      <p class="text-danger">Minimum eight characters, at least one uppercase letter, one lowercase letter and one number.</p>
+  </div>
+  <div *ngIf="loginErrors">
+    <p class="text-danger">{{this.loginErrorsStr}}</p>
+  </div>
+    <button [disabled]="this.form.invalid" type="submit"  mat-raised-button color="primary">Enter</button>
+  </form>
+</div>

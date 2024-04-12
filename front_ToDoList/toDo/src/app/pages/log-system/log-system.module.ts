@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { LogSystemRoutingModule } from './log-system-routing.module';
 import { LogSystemComponent } from './log-system.component';
 import { SignInComponent } from './sign-in/sign-in.component';
@@ -24,8 +23,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     ReactiveFormsModule,
     MatButtonModule,
     MatInputModule,
-    MatFormFieldModule
-
+    MatFormFieldModule,
   ]
 })
 export class LogSystemModule { }
