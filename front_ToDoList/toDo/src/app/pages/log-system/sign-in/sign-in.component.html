@@ -1,8 +1,59 @@
 <div>
-  <form [formGroup]="form">
+  <form [formGroup]="form" (ngSubmit)="save()">
     <div>
-      <label for="name">Name:</label>
-      <input type="text" id="name" formControlName="name">
+      <mat-form-field class="example-full-width">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Mario" formControlName="name">
+      </mat-form-field>
     </div>
+    <div *ngIf="inputHasError('name')">
+      <p class="text-danger">Name Required</p>
+    </div>
+    <div>
+      <mat-form-field class="example-full-width">
+        <mat-label>Surname</mat-label>
+        <input matInput placeholder="Rossi" formControlName="surname">
+      </mat-form-field>
+    </div>
+    <div *ngIf="inputHasError('surname')">
+      <p class="text-danger">Surname Required</p>
+    </div>
+    <div>
+      <mat-form-field class="example-full-width">
+        <mat-label>Username</mat-label>
+        <input matInput placeholder="marioR" formControlName="username">
+      </mat-form-field>
+    </div>
+    <div *ngIf="inputHasError('username')">
+      <p class="text-danger">Username Required</p>
+    </div>
+    <div>
+      <mat-form-field class="example-full-width">
+        <mat-label>Age</mat-label>
+        <input type="number" matInput placeholder="25" formControlName="age">
+      </mat-form-field>
+    </div>
+    <div *ngIf="inputHasError('age')">
+      <p class="text-danger">Age Required</p>
+    </div>
+    <div>
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput placeholder="********" formControlName="password">
+      </mat-form-field>
+    </div>
+    <div *ngIf="inputHasError('password')">
+        <p class="text-danger">Minimum eight characters, at least one uppercase letter, one lowercase letter and one number.</p>
+    </div>
+    <div>
+      <mat-form-field class="example-full-width">
+        <mat-label>Repeat Password</mat-label>
+        <input type="password" matInput placeholder="********" formControlName="password2">
+      </mat-form-field>
+    </div>
+    <div *ngIf="inputHasError('password2')">
+      <p class="text-danger">Passwords do not matches.</p>
+    </div>
+    <button [disabled]="this.form.invalid" type="submit">Save</button>
   </form>
 </div>

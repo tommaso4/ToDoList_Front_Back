@@ -1,1 +1,11 @@
-<p>log-system works!</p>
+<div class="mx-5 my-2">
+  <div class=" d-flex justify-content-end">
+    <div *ngIf="!isInSignRoute()">
+      <a mat-raised-button routerLink="/log-system/log-system/sign-in">Sign-in</a>
+    </div>
+    <div *ngIf="isInSignRoute()" class="mb-2">
+      <a mat-raised-button routerLink="/log-system/log-system/log-in" >Log-in</a>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</div>
