@@ -1,1 +1,14 @@
-<p>create-task works!</p>
+<div class="d-form">
+  <form class="example-form" [formGroup]="form" (ngSubmit)="save()">
+    <mat-form-field class="example-full-width">
+      <mat-label>Task</mat-label>
+      <input matInput placeholder="Tell to granMother" formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Leave a comment</mat-label>
+      <textarea matInput placeholder="Ex. It makes me feel..." formControlName="description"></textarea>
+    </mat-form-field>
+    <button [disabled]="!form.valid" mat-button color="primary" >Create Task</button>
+  </form>
+</div>

@@ -16,9 +16,6 @@ public class TaskCtrl {
     @Autowired
     private TaskSvc taskSvc;
 
-//    @Autowired
-//    private
-
     @PostMapping("/task/create/{idUser}")
     public ResponseEntity<CustomResponse> createTask(@RequestBody @Validated TaskReq taskReq,
                                                      @PathVariable int idUser, BindingResult result){
