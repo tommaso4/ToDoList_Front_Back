@@ -10,13 +10,16 @@ export class AppComponent{
 
   title = 'toDo';
 
-  username:string = localStorage.getItem('username') || '';
+  username!:string;
 
   constructor(
     private logSvc: LogServiceService
   ) { }
 
   isloggedIn(): boolean {
+    if(this.logSvc.isLoggedIn()){
+      this.username = localStorage.getItem('username') || '';
+    }
     return this.logSvc.isLoggedIn()
   }
 

@@ -26,7 +26,6 @@ export class TaskSvcService {
   createTask(newTask: ITask): Observable<IresponseToken> {
     const header = this.getHeader();
     const idUser = localStorage.getItem(('idUser'))
-    console.log(header);
     return this.http.post<IresponseToken>(this.taskUrl + 'create/' + idUser, newTask, { headers: header })
   }
 

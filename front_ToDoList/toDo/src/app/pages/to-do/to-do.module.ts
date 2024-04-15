@@ -11,6 +11,7 @@ import { CompletedComponent } from './completed/completed.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TaskListComponent } from './task-list/task-list.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ToDoComponent,
     CompletedComponent,
     CreateTaskComponent,
-    TodoListComponent
+    TodoListComponent,
+    TaskListComponent
   ],
   imports: [
     CommonModule,
