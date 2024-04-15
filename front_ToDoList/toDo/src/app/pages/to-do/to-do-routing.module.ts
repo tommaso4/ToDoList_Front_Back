@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ToDoComponent } from './to-do.component';
+import ToDoComponent from './to-do.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
 import { CompletedComponent } from './completed/completed.component';

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription, catchError } from 'rxjs';
 import { ITask } from '../../../modules/itask';
 import { TaskSvcService } from '../../../services/task-svc.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-task',
@@ -16,7 +17,8 @@ export class CreateTaskComponent implements OnInit, OnDestroy {
 
   constructor(
     private fb: FormBuilder,
-    private takSvc: TaskSvcService
+    private takSvc: TaskSvcService,
+    private router: Router
   ) { }
 
 
@@ -27,15 +29,16 @@ export class CreateTaskComponent implements OnInit, OnDestroy {
     })
   }
   ngOnDestroy(): void {
-    if(this.subCreateTask)this.subCreateTask.unsubscribe();
+    if (this.subCreateTask) this.subCreateTask.unsubscribe();
   }
 
   save() {
-    const task:ITask = this.form.value as ITask;
+    const task: ITask = this.form.value as ITask;
     this.subCreateTask = this.takSvc.createTask(task).pipe(
-      catchError(err=>{throw err})
-    ).subscribe(()=>{
-      this.form.reset()
+      catchError(err => { throw err })
+    ).subscribe(() => {
+      this.form.reset();
+      this.router.navigate(['toDo/toDo/todoList']);
     })
   }
 

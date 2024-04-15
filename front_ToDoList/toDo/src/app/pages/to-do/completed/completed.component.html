@@ -1,1 +1,15 @@
-<p>completed works!</p>
+<div *ngFor="let task of tasks" class="my-card">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>{{task.name}}</mat-card-title>
+      <mat-card-subtitle>{{task.creationDate}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{task.description}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button color="warn" (click)="deleteTask(task.id)">DELETE</button>
+      <button mat-button color="primary" (click)="changeCompleted(task.id)">COMPLETED</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
