@@ -63,7 +63,11 @@ public class UserCtrl {
         return CustomResponse.success(HttpStatus.OK.toString(),users, HttpStatus.OK);
     }
 
-
+    @GetMapping("user/{idUser}")
+    public ResponseEntity<CustomResponse> getUserById(@PathVariable int idUser){
+        User user = userSvc.findUserById(idUser);
+        return CustomResponse.success(HttpStatus.OK.toString(),user,HttpStatus.OK);
+    }
 }
 
 
